@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 const Main = () => {
     return (
-        <div className='container mx-auto px-2'>
+        <div>
             <NavBar></NavBar>
             <Outlet></Outlet>
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
@@ -35,14 +36,13 @@ const NavBar = () => {
               <ActiveLink to="/blog">Blog</ActiveLink>
             </li>
             <li>
-              <ActiveLink to="/login">Login</ActiveLink>
-            </li>
-            <li>
               <ActiveLink to="/register">Register</ActiveLink>
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Damn <span className="text-purple-700">Delicious</span></a>
+        <a className="btn btn-ghost normal-case text-xl">
+          Damn <span className="text-purple-700">Delicious</span>
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -53,15 +53,12 @@ const NavBar = () => {
             <ActiveLink to="/blog">Blog</ActiveLink>
           </li>
           <li>
-            <ActiveLink to="/login">Login</ActiveLink>
-          </li>
-          <li>
             <ActiveLink to="/register">Register</ActiveLink>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <Link>Profile</Link>
+        <Link to="/login">Login</Link>
       </div>
     </div>
   );
