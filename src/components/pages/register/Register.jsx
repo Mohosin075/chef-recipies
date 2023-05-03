@@ -1,16 +1,51 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from './../../../Providers/AuthProvider';
 
 const Register = () => {
+
+    const {createUser} = useContext(AuthContext)
+    const [error, setError] = useState('');
+
+    const handleRegister =event=>{
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photo = form.photo.value;
+        const password = form.password.value;
+        const confirm = form.confirm.value;
+        console.log(name, email, password, confirm, photo);
+
+
+        // password validation
+
+        if(password.length < 7){
+            setError('password at lest 8 char')
+            return;
+        }
+
+        createUser(email, password)
+        .then(result=>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+
+
+    }
+
   return (
-    <form className="hero pb-10 pt-4 bg-base-200 w-full">
+    <form onSubmit={handleRegister} className="hero pb-10 pt-4 bg-base-200 w-full">
       <div className="hero-content flex-col w-full">
         <div className="text-center lg:text-left">
           <h1 className="text-3xl lg:text-5xl font-bold text-center">
             Register now!
           </h1>
-          <p className="py-6 text-center">Error :</p>
+          <p className="py-6 text-center text-red-600">Error : {error}</p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl bg-base-100">
           <div className="card-body">
@@ -22,6 +57,7 @@ const Register = () => {
                 type="text"
                 placeholder="Your Name"
                 className="input input-bordered"
+                name="name"
                 required
               />
             </div>
@@ -32,6 +68,7 @@ const Register = () => {
               <input
                 type="email"
                 placeholder="email"
+                name="email"
                 className="input input-bordered"
                 required
               />
@@ -43,6 +80,7 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="Photo URL"
+                name="photo"
                 className="input input-bordered"
               />
             </div>
@@ -53,6 +91,7 @@ const Register = () => {
               <input
                 type="password"
                 placeholder="password"
+                name="password"
                 className="input input-bordered"
                 required
               />
@@ -64,6 +103,7 @@ const Register = () => {
               <input
                 type="password"
                 placeholder="Confirm Password"
+                name="confirm"
                 className="input input-bordered"
                 required
               />
