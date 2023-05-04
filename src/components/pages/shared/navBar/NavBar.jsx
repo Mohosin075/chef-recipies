@@ -69,7 +69,7 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        {user ? <><div className="tooltip" data-tip={user && user.displayName}><img className="w-8 h-8 cursor-pointer rounded-full" src={user && user.photoURL} alt="" /></div> <button onClick={handleLogOut} className="btn btn-sm ms-2">Log Out</button></> : <Link to="/login">Login</Link>}
+        {user ? <><div className="tooltip" data-tip={user && user.displayName}><img className="w-8 h-8 cursor-pointer rounded-full" src={user && user.photoURL} alt="" /></div> <button onClick={handleLogOut} className="btn btn-sm ms-2">Log Out</button></> : <Link to="/login"><button className="btn btn-sm">Login</button></Link>}
         
       </div>
     </div>
