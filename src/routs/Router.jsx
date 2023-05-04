@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         },
         {
             path : '/:id',
-            element : <VeiwRecipy></VeiwRecipy>,
+            element : <PrivateRoutes><VeiwRecipy></VeiwRecipy></PrivateRoutes>,
             loader: ({params})=> fetch(`http://localhost:5000/${params.id}`)
         },
         {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         },
         {
             path : '/blog',
-            element : <PrivateRoutes><Blog></Blog></PrivateRoutes>,
+            element : <Blog></Blog>
         },
         {
             path : '*',
