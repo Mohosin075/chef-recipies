@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 
 const Login = () => {
-  const { signIn,googleLogin } = useContext(AuthContext);
+  const { signIn,googleLogin , githubLogin} = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,6 +37,19 @@ const Login = () => {
       const loggedUser = result.user;
       console.log(loggedUser);
       navigate(from);
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+  }
+
+
+  const handleGithubLogin = () =>{
+    githubLogin()
+    .then(result=>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      navigate(from)
     })
     .catch(err=>{
       console.log(err);
@@ -94,7 +107,7 @@ const Login = () => {
             </div>
           </form>
           <div className="my-4 space-y-4 w-3/5 mx-auto">
-            <button className="btn btn-outline btn-info w-full"  onClick={handleGoogleLogin}>
+            <button className="btn btn-outline btn-info w-full text-xs"  onClick={handleGoogleLogin}>
               {" "}
               <span className="me-1">
                 <img
@@ -105,7 +118,7 @@ const Login = () => {
               </span>
               Continue with Google
             </button>
-            <button className="btn btn-outline btn-success w-full">
+            <button onClick={handleGithubLogin} className="btn btn-outline btn-success w-full text-xs">
               <span className="me-1">
                 <img
                   className="w68 h-6 rounded-full"

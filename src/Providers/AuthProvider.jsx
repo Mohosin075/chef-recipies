@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { createContext, useEffect, useState } from "react";
 import {
+    GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
@@ -31,11 +32,16 @@ const AuthProvider = ({ children }) => {
   };
 
   const googleProvider = new GoogleAuthProvider(auth);
+  const githubProvider = new GithubAuthProvider(auth)
 
   const googleLogin = () => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  const githubLogin =()=>{
+    return signInWithPopup(auth, githubProvider);
+  }
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -68,6 +74,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     logOut,
     googleLogin,
+    githubLogin,
     loading,
     updateUseData
   };
