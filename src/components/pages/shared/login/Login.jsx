@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 
 const Login = () => {
-  const { signIn} = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
+  const from = location.state?.from?.pathname || "/";
 
-  const handleLogin=event=>{
+  const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -17,17 +19,16 @@ const Login = () => {
     console.log(email, password);
 
     signIn(email, password)
-    .then(result=>{
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      navigate('/')
-    })
-    .catch(err=>{
-      setError(err.message)
-      console.log(err);
-    })
-
-  }
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from);
+      })
+      .catch((err) => {
+        setError(err.message);
+        console.log(err);
+      });
+  };
 
   return (
     <form onSubmit={handleLogin} className="hero pb-10 pt-4 bg-base-200 w-full">
@@ -69,7 +70,7 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-            <p className="pb-2 text-center text-red-600">{error}</p>
+              <p className="pb-2 text-center text-red-600">{error}</p>
               <button className="btn btn-secondary">Login</button>
               <p className="text-xs my-3 text-center">
                 New to this website ?{" "}

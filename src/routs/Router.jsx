@@ -4,6 +4,8 @@ import Login from "../components/pages/shared/login/Login";
 import Register from "../components/pages/register/Register";
 import Blog from "../components/pages/blog/Blog";
 import Home from "../components/pages/home/home/Home";
+import PrivateRoutes from "./PrivateRoutes";
+import Error from "../components/pages/Error404/Error";
 
 /* eslint-disable no-unused-vars */
 const router = createBrowserRouter([
@@ -25,7 +27,11 @@ const router = createBrowserRouter([
         },
         {
             path : '/blog',
-            element : <Blog></Blog>
+            element : <PrivateRoutes><Blog></Blog></PrivateRoutes>
+        },
+        {
+            path : '*',
+            element : <Error></Error>
         },
       ]
     },
