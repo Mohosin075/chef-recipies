@@ -9,13 +9,15 @@ import { AuthContext } from "../../../../Providers/AuthProvider";
 const NavBar = () => {
   const {user, logOut} = useContext(AuthContext);
 
+  console.log(user);
+
   const handleLogOut =()=>{
     logOut()
     .then(()=>{}).catch(err=>{console.log(err)})
   }
 
   return (
-    <div className="navbar bg-base-100 px-2 lg:px-20">
+    <div className="navbar py-6 bg-base-100 px-2 lg:px-20">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -62,12 +64,12 @@ const NavBar = () => {
             <ActiveLink to="/blog">Blog</ActiveLink>
           </li>
           <li>
-            <ActiveLink to="/register">Register</ActiveLink>
+            { user ? <></> : <ActiveLink to="/register">Register</ActiveLink>}
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        {user ? <><img className="w-8 h-8 cursor-pointer rounded-full" src={`https://img.freepik.com/free-icon/user_318-159711.jpg`} alt="" /> <button onClick={handleLogOut} className="btn btn-sm ms-2">Log Out</button></> : <Link to="/login">Login</Link>}
+        {user ? <><div className="tooltip" data-tip={user && user.displayName}><img className="w-8 h-8 cursor-pointer rounded-full" src={user && user.photoURL} alt="" /></div> <button onClick={handleLogOut} className="btn btn-sm ms-2">Log Out</button></> : <Link to="/login">Login</Link>}
         
       </div>
     </div>
