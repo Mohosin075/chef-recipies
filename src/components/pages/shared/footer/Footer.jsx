@@ -17,10 +17,18 @@ const Footer = () => {
           <div className="ps-4 mt-6 mt-8">
             <h3 className="text-xl mb-4 text-white">LINKS </h3>
             <div className="flex space-x-4">
-                <a href="#"><FaFacebook></FaFacebook></a>
-                <a href="#"><FaTwitter></FaTwitter></a>
-                <a href="#"><FaGithub></FaGithub></a>
-                <a href="#"><FaInstagram></FaInstagram></a>
+              <a href="#">
+                <FaFacebook></FaFacebook>
+              </a>
+              <a href="#">
+                <FaTwitter></FaTwitter>
+              </a>
+              <a href="#">
+                <FaGithub></FaGithub>
+              </a>
+              <a href="#">
+                <FaInstagram></FaInstagram>
+              </a>
             </div>
           </div>
           <p className="ps-4 text-gray-500"></p>
@@ -57,6 +65,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <footer className="footer footer-center p-4 ">
+        <div>
+          <p className="text-gray-400">Copyright © 2023 - All right reserved by <span>DamnDelicious</span></p>
+        </div>
+      </footer>
     </div>
   );
 };

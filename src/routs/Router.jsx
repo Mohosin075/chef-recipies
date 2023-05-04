@@ -6,6 +6,7 @@ import Blog from "../components/pages/blog/Blog";
 import Home from "../components/pages/home/home/Home";
 import PrivateRoutes from "./PrivateRoutes";
 import Error from "../components/pages/Error404/Error";
+import VeiwRecipy from "../components/pages/home/chefs/veiw/VeiwRecipy";
 
 /* eslint-disable no-unused-vars */
 const router = createBrowserRouter([
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
             path : '/',
             element : <Home></Home>,
             loader : ()=> fetch('http://localhost:5000/')
+        },
+        {
+            path : '/:id',
+            element : <VeiwRecipy></VeiwRecipy>,
+            loader: ({params})=> fetch(`http://localhost:5000/${params.id}`)
         },
         {
             path : '/login',
