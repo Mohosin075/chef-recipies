@@ -23,18 +23,6 @@ const AuthProvider = ({children}) => {
 
 
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, loggedUser =>{
-            console.log("logged user inside auth state observer", loggedUser);
-            setUser(loggedUser)
-            setLoading(false)
-        })
-        return ()=>{
-            unsubscribe()
-        }
-    },[])
-
-
     const logOut=()=>{
         setLoading(true)
         return signOut(auth);
@@ -43,9 +31,6 @@ const AuthProvider = ({children}) => {
     const authInfo = {
         user,
         createUser, 
-        signIn,
-        logOut,
-        loading
     }
 
     return (

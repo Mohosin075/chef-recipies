@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -5,14 +6,18 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
+console.log(import.meta.env.VITE_APIKEY);
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAbB8d9WprndSTEisUcLzg4vg7nD_cWD84",
-  authDomain: "chef-recipe-hunting-assi-1edae.firebaseapp.com",
-  projectId: "chef-recipe-hunting-assi-1edae",
-  storageBucket: "chef-recipe-hunting-assi-1edae.appspot.com",
-  messagingSenderId: "120509531971",
-  appId: "1:120509531971:web:30d0bb978afcc00a8151f6"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
