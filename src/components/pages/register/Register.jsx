@@ -35,19 +35,16 @@ const Register = () => {
     } else if (!/(?=.*[0-9])/.test(password)) {
       setError("At lest one number");
       return;
-    }
-    else if (!/(?=.*?[#?!@$%^&*-])/.test(password)) {
+    } else if (!/(?=.*?[#?!@$%^&*-])/.test(password)) {
       setError("At lest one special carecter");
       return;
     }
-
-
 
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate('/')
+        navigate("/");
         setError("");
       })
       .catch((err) => {
@@ -56,7 +53,7 @@ const Register = () => {
   };
 
   return (
-    <form
+    <div
       onSubmit={handleRegister}
       className="hero pb-10 pt-4 bg-base-200 w-full"
     >
@@ -67,7 +64,7 @@ const Register = () => {
           </h1>
         </div>
         <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl bg-base-100">
-          <div className="card-body">
+          <form className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Your Name</span>
@@ -139,34 +136,11 @@ const Register = () => {
                   login
                 </Link>
               </p>
-              <div className="my-4 space-y-4 w-3/5 mx-auto">
-                <button className="btn btn-outline btn-info w-full">
-                  {" "}
-                  <span className="me-1">
-                    <img
-                      className="w68 h-6 rounded-full"
-                      src="https://icon2.cleanpng.com/20180423/rjw/kisspng-google-logo-logo-logo-5ade7dc7134299.2873015115245306310789.jpg"
-                      alt=""
-                    />
-                  </span>
-                  Continue with Google
-                </button>
-                <button className="btn btn-outline btn-success w-full">
-                  <span className="me-1">
-                    <img
-                      className="w68 h-6 rounded-full"
-                      src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
-                      alt=""
-                    />
-                  </span>
-                  Continue with GitHub
-                </button>
-              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
@@ -6,7 +7,7 @@ import ActiveLink from "../../../../utility/ActiveLink";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 
 const NavBar = () => {
-  const {user,logOut} = useContext(AuthContext);
+  const {user, logOut} = useContext(AuthContext);
 
   const handleLogOut =()=>{
     logOut()
