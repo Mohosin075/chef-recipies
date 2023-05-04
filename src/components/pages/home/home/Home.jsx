@@ -2,14 +2,22 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import Banner from "../banner/Banner";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import Chefs from "../chefs/Chefs";
 
 const Home = () => {
   const data = useLoaderData();
+    const navigation = useNavigation();
   console.log(data);
   return (
     <div>
+        <div className="text-5xl">
+        {
+            
+            navigation.state === "loading"
+            && <button className="btn loading">loading</button>
+        }
+        </div>
       <Banner></Banner>
       <div className="px-2 lg:px-20">
         <div className="py-20">

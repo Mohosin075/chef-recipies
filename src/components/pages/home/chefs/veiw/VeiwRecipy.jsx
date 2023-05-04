@@ -24,7 +24,7 @@ const VeiwRecipy = () => {
   return (
     <div className=" py-20 px-2 lg:px-20">
       <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure className="h-96">
+        <figure className="h-96 w-full">
           <img src={img} alt="Album" />
         </figure>
         <div className="card-body space-y-1">
