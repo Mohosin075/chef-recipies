@@ -1,10 +1,18 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ActiveLink from "../../../../utility/ActiveLink";
+import { AuthContext } from "../../../../Providers/AuthProvider";
 
 const NavBar = () => {
+  const {user,logOut} = useContext(AuthContext);
+
+  const handleLogOut =()=>{
+    logOut()
+    .then(()=>{}).catch(err=>{console.log(err)})
+  }
+
   return (
     <div className="navbar bg-base-100 px-2 lg:px-20">
       <div className="navbar-start">
@@ -58,7 +66,8 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">Login</Link>
+        {user ? <><img className="w-8 h-8 cursor-pointer rounded-full" src={`https://img.freepik.com/free-icon/user_318-159711.jpg`} alt="" /> <button onClick={handleLogOut} className="btn btn-sm ms-2">Log Out</button></> : <Link to="/login">Login</Link>}
+        
       </div>
     </div>
   );
