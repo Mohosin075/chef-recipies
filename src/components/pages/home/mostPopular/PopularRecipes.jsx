@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { toast } from 'react-toastify';
+import LazyLoad from "react-lazy-load";
+import { toast } from "react-toastify";
+import './popular.css'
 
 const PopularRecipes = () => {
   const [data, setData] = useState([]);
@@ -16,21 +18,31 @@ const PopularRecipes = () => {
       });
   }, []);
 
-
   return (
     <div className="px-2 mt-10 lg:px-20 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-12">
       {data.map((pop) => {
         return (
           <div key={pop.id}>
-            <div onClick={()=>toast("zoom in feature not added!")} className="card w-full hover:drop-shadow-2xl cursor-zoom-in bg-base-100 shadow-xl image-full">
+            <div
+              onClick={() => toast("zoom in feature not added!")}
+              className="card w-full hover:drop-shadow-2xl cursor-zoom-in bg-base-100 shadow-xl image-full"
+            >
               <figure>
-                <img
-                  src={pop.img}
-                  alt="Shoes"
-                />
+                <div>
+                  <LazyLoad
+                    threshold={0.95}
+                    onContentVisible={() => {
+                      console.log("loaded!");
+                    }}
+                  >
+                    <img src={pop.img} />
+                  </LazyLoad>
+                </div>
               </figure>
               <div className="card-body">
-                <h2 className="text-3xl mt-12 font-semibold text-center">{pop.title}</h2>
+                <h2 className="text-3xl mt-12 font-semibold text-center">
+                  {pop.title}
+                </h2>
               </div>
             </div>
           </div>
