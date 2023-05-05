@@ -3,6 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// chef section
 const Chefs = ({ chef }) => {
   const { id, name, img , author, experience,numberOfRecipy, likes} = chef;
   return (

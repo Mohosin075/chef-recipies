@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-
+// answer some important question
 const Blog = () => {
   return (
     <section className="w-9/12 md:w-10/12 mx-auto my-5">
@@ -50,8 +50,10 @@ const Blog = () => {
               props. Here are some of the commonly used PropTypes:
               <hr className="my-5" />
               <div className="text-sm">
-              PropTypes.string <br /> PropTypes.number <br /> PropTypes.bool <br /> PropTypes.object<br />
-              PropTypes.array <br /> PropTypes.func <br /> etc
+                PropTypes.string <br /> PropTypes.number <br /> PropTypes.bool{" "}
+                <br /> PropTypes.object
+                <br />
+                PropTypes.array <br /> PropTypes.func <br /> etc
               </div>
             </p>
           </div>

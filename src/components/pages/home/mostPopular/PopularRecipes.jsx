@@ -3,6 +3,8 @@ import { toast } from 'react-toastify';
 
 const PopularRecipes = () => {
   const [data, setData] = useState([]);
+
+  // popular section data load
   useEffect(() => {
     fetch("https://chef-server-mohosin075.vercel.app/popular")
       .then((res) => res.json())
@@ -14,7 +16,6 @@ const PopularRecipes = () => {
       });
   }, []);
 
-  console.log(data);
 
   return (
     <div className="px-2 mt-10 lg:px-20 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-12">

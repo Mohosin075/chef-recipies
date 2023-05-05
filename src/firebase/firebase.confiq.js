@@ -7,7 +7,7 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 
-console.log(import.meta.env.VITE_APIKEY);
+// hide important information
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APIKEY,

@@ -13,6 +13,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.confiq";
+// create context
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
@@ -21,27 +22,36 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // create User With Email And Password
+
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
+
+  // sing in user for email and password
 
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // providers
   const googleProvider = new GoogleAuthProvider(auth);
   const githubProvider = new GithubAuthProvider(auth)
 
+  // google Login
   const googleLogin = () => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  // github  login
   const githubLogin =()=>{
     return signInWithPopup(auth, githubProvider);
   }
   
+  // on auth change handle
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -52,6 +62,7 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  // update user data 
   const updateUseData = (name , url) => {
     updateProfile(auth.currentUser, {
       displayName: name, photoURL: url
@@ -63,6 +74,7 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  // log out
   const logOut = () => {
     setLoading(true);
     return signOut(auth);

@@ -6,11 +6,14 @@ import { AuthContext } from "../../../../Providers/AuthProvider";
 const Login = () => {
   const { signIn,googleLogin , githubLogin} = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [show, setShow] = useState(false)
   const navigate = useNavigate();
   const location = useLocation();
 
+  // previous location
   const from = location.state?.from?.pathname || "/";
 
+  // handle login
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -18,6 +21,7 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
 
+    // sign in with email and password
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
@@ -31,6 +35,7 @@ const Login = () => {
   };
 
 
+  // handle google login
   const handleGoogleLogin =()=>{
     googleLogin()
     .then(result=>{
@@ -43,7 +48,7 @@ const Login = () => {
     })
   }
 
-
+// handle github login
   const handleGithubLogin = () =>{
     githubLogin()
     .then(result=>{
@@ -82,13 +87,16 @@ const Login = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input
-                type="password"
-                placeholder="password"
-                name="password"
-                className="input input-bordered"
-                required
-              />
+              <div className="flex items-center justify-between">
+                <input
+                  type={show ? 'text' : 'password'}
+                  placeholder="password"
+                  name="password"
+                  className="input input-bordered relative w-full"
+                  required
+                />
+                <span className="absolute right-10 p-2 cursor-pointer" onClick={()=>setShow(!show)}>{show ? 'hide' : 'show'}</span>
+              </div>
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?

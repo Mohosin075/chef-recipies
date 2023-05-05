@@ -2,6 +2,7 @@ import React from "react";
 import ProgressBar from "../../../../utility/ProgressBar";
 
 const Review = () => {
+  // review section
   return (
     <div className="px-2 lg:px-20 bg-gray-200 py-16 font-semibold text-gray-700">
       <h2 className="text-3xl md:text-5xl text-center font-bold">Review</h2>
@@ -22,6 +23,7 @@ const Review = () => {
         </div>
         <div className="bg-white font-bold p-6 rounded mt-10 md:mt-0">
           <h4 className="text-xl font-bold text-purple-700 mb-4">Ratings</h4>
+          {/* rating progress bar */}
           <ProgressBar percentage={60} label="60%" star={'5 star'}/>
           <ProgressBar percentage={5} label="5%" star={'4 star'}/>
           <ProgressBar percentage={15} label="15%" star={'3 star'}/>

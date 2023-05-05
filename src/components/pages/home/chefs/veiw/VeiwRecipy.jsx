@@ -8,6 +8,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
+
+// chef recipes page and show all recipes
+
 const VeiwRecipy = () => {
   const chefInfo = useLoaderData();
 
@@ -15,8 +18,7 @@ const VeiwRecipy = () => {
     chefInfo;
   const { description, ingredients, method, rating } = details[0];
 
-  console.log(chefInfo);
-
+// handle toast
   const handleToast = (e) => {
     toast("Added Favorite!");
     e.target.disabled = true;
@@ -37,7 +39,7 @@ const VeiwRecipy = () => {
         </div>
       </div>
       <div className="py-20">
-        <h3 className="text-center text-4xl pb-10 uppercase">details</h3>
+        <h3 className="text-center text-4xl pb-10 uppercase">Chef Recipes</h3>
         <hr className="mb-10 w-2/3 mx-auto" />
         <div className="md:flex gap-12">
           <div>

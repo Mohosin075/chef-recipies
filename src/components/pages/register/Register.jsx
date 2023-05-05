@@ -7,8 +7,10 @@ import { AuthContext } from "./../../../Providers/AuthProvider";
 const Register = () => {
   const { createUser, user, updateUseData } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
+  // handle Register
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -39,20 +41,21 @@ const Register = () => {
       setError("At lest one special carecter");
       return;
     }
-
+    // create user with email and password
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        updateUseData(name , photo);
+        updateUseData(name, photo);
         console.log(loggedUser);
         navigate("/");
         setError("");
       })
       .catch((err) => {
         console.log(err);
+        setError(err.message)
       });
   };
-
+  
   return (
     <div
       onSubmit={handleRegister}
@@ -99,31 +102,38 @@ const Register = () => {
                 placeholder="Photo URL"
                 name="photo"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input
-                type="password"
-                placeholder="password"
-                name="password"
-                className="input input-bordered"
-                required
-              />
+              <div className="flex items-center justify-between">
+                <input
+                  type={show ? 'text' : 'password'}
+                  placeholder="password"
+                  name="password"
+                  className="input input-bordered relative w-full"
+                  required
+                />
+                <span className="absolute right-10 p-2 cursor-pointer" onClick={()=>setShow(!show)}>{show ? 'hide' : 'show'}</span>
+              </div>
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Confirm Password</span>
               </label>
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                name="confirm"
-                className="input input-bordered"
-                required
-              />
+              <div className="flex items-center justify-between">
+                <input
+                  type={show ? 'text' : 'password'}
+                  placeholder="Confirm Password"
+                  name="confirm"
+                  className="input input-bordered relative w-full"
+                  required
+                />
+                <span className="absolute right-10 p-2 cursor-pointer" onClick={()=>setShow(!show)}>{show ? 'hide' : 'show'}</span>
+              </div>
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover"></a>
               </label>
