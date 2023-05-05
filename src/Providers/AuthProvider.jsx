@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -50,6 +51,10 @@ const AuthProvider = ({ children }) => {
   const githubLogin =()=>{
     return signInWithPopup(auth, githubProvider);
   }
+
+  const forgetPassword = (email) =>{
+    return sendPasswordResetEmail(auth, email)
+  }
   
   // on auth change handle
   useEffect(() => {
@@ -84,6 +89,7 @@ const AuthProvider = ({ children }) => {
     user,
     createUser,
     signIn,
+    forgetPassword,
     logOut,
     googleLogin,
     githubLogin,

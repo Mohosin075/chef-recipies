@@ -2,11 +2,13 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../Providers/AuthProvider";
+import { toast } from 'react-toastify';
 
 const Login = () => {
-  const { signIn,googleLogin , githubLogin} = useContext(AuthContext);
+  const { signIn,googleLogin , githubLogin , forgetPassword} = useContext(AuthContext);
   const [error, setError] = useState("");
   const [show, setShow] = useState(false)
+  const [e, setE] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,6 +20,7 @@ const Login = () => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
+
     const password = form.password.value;
     console.log(email, password);
 
@@ -30,10 +33,19 @@ const Login = () => {
       })
       .catch((err) => {
         setError(err.message);
-        console.log(err);
       });
   };
 
+
+  const handleForgetPass =()=>{
+    setError('')
+    forgetPassword(e)
+    .then(()=>{
+      toast("Check Your Email & Reset Password")
+    }).catch(err=>{
+      setError(err.message)
+    })
+  }
 
   // handle google login
   const handleGoogleLogin =()=>{
@@ -81,6 +93,7 @@ const Login = () => {
                 name="email"
                 className="input input-bordered"
                 required
+                onChange={(e)=>setE(e.target.value)}
               />
             </div>
             <div className="form-control">
@@ -98,7 +111,7 @@ const Login = () => {
                 <span className="absolute right-10 p-2 cursor-pointer" onClick={()=>setShow(!show)}>{show ? 'hide' : 'show'}</span>
               </div>
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <a href="#" className="label-text-alt link link-hover" onClick={handleForgetPass}>
                   Forgot password?
                 </a>
               </label>
