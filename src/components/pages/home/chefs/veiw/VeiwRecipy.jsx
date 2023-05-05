@@ -2,9 +2,11 @@
 /* eslint-disable no-unused-vars */
 // import React from 'react';
 
+import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 const VeiwRecipy = () => {
   const chefInfo = useLoaderData();
@@ -15,11 +17,10 @@ const VeiwRecipy = () => {
 
   console.log(chefInfo);
 
-  const handleToast =(e)=>{
-    toast("Added Favorite!")
+  const handleToast = (e) => {
+    toast("Added Favorite!");
     e.target.disabled = true;
-  }
-
+  };
 
   return (
     <div className=" py-20 px-2 lg:px-20">
@@ -36,8 +37,8 @@ const VeiwRecipy = () => {
         </div>
       </div>
       <div className="py-20">
-          <h3 className="text-center text-4xl pb-10 uppercase">details</h3>
-          <hr className="mb-10 w-2/3 mx-auto" />
+        <h3 className="text-center text-4xl pb-10 uppercase">details</h3>
+        <hr className="mb-10 w-2/3 mx-auto" />
         <div className="md:flex gap-12">
           <div>
             <div className="card w-full bg-base-100 shadow-xl">
@@ -59,9 +60,19 @@ const VeiwRecipy = () => {
                     </li>
                   ))}
                 </div>
-                <p className="font-semibold">Rating : {rating}</p>
+                <p className="font-semibold">Rating : {rating} <span><Rating
+                    placeholderRating={4.5}
+                    readonly
+                    emptySymbol={<FaRegStar></FaRegStar>}
+                    placeholderSymbol={
+                      <FaStar></FaStar>
+                    }
+                    fullSymbol={<FaStar></FaStar>}
+                  /></span></p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-secondary" onClick={handleToast}>Favorite</button>
+                  <button className="btn btn-secondary" onClick={handleToast}>
+                    Favorite
+                  </button>
                 </div>
               </div>
             </div>
@@ -86,9 +97,19 @@ const VeiwRecipy = () => {
                     </li>
                   ))}
                 </div>
-                <p className="font-semibold">Rating : {rating}</p>
+                <p className="font-semibold">Rating : {rating} <span><Rating
+                    placeholderRating={4.5}
+                    readonly
+                    emptySymbol={<FaRegStar></FaRegStar>}
+                    placeholderSymbol={
+                      <FaStar></FaStar>
+                    }
+                    fullSymbol={<FaStar></FaStar>}
+                  /></span></p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-secondary" onClick={handleToast}>Favorite</button>
+                  <button className="btn btn-secondary" onClick={handleToast}>
+                    Favorite
+                  </button>
                 </div>
               </div>
             </div>
@@ -113,9 +134,19 @@ const VeiwRecipy = () => {
                     </li>
                   ))}
                 </div>
-                <p className="font-semibold">Rating : {rating}</p>
+                <p className="font-semibold">Rating : {rating} <span><Rating
+                    placeholderRating={4.5}
+                    readonly
+                    emptySymbol={<FaRegStar></FaRegStar>}
+                    placeholderSymbol={
+                      <FaStar></FaStar>
+                    }
+                    fullSymbol={<FaStar></FaStar>}
+                  /></span></p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-secondary" onClick={handleToast} >Favorite</button>
+                  <button className="btn btn-secondary" onClick={handleToast}>
+                    Favorite
+                  </button>
                 </div>
               </div>
             </div>
