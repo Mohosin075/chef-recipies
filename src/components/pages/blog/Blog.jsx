@@ -1,10 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useRef } from "react";
+import ReactToPrint from "react-to-print";
 // answer some important question
 const Blog = () => {
+
+  const ref = useRef();
   return (
     <section className="w-9/12 md:w-10/12 mx-auto my-5">
       <hr />
+      <div className="mt-12 text-center">
+        <ReactToPrint trigger={()=><button className="btn btn-info">Create PDF and Download all Question</button>} content={()=>ref.current}></ReactToPrint>
+        </div>
+      <div ref={ref} className="p-6">
       <h1 className="text-center my-10 text-2xl md:text-4xl font-bold">
         Some <span className="text-purple-600">Important</span> Question
       </h1>
@@ -86,6 +93,7 @@ const Blog = () => {
             </p>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
