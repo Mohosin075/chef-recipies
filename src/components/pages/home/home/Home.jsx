@@ -5,6 +5,7 @@ import Banner from "../banner/Banner";
 import { useLoaderData, useNavigation } from "react-router-dom";
 import Chefs from "../chefs/Chefs";
 import Review from "../Review/Review";
+import PopularRecipes from "../mostPopular/PopularRecipes";
 
 const Home = () => {
   const data = useLoaderData();
@@ -41,6 +42,12 @@ const Home = () => {
       </div>
       {/* Review section : extra section */}
       <Review></Review>
+      {/* most popular recipes section : extra*/}
+      <div className="py-16">
+        <h2 className="text-3xl md:text-5xl text-center font-bold">MOST POPULAR RECIPES</h2>
+        <hr  className="w-2/3 mx-auto mt-8"/>
+        <PopularRecipes></PopularRecipes>
+      </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ function ProgressBar({ percentage, label , star }) {
     borderRadius: '10px',
     position: 'relative',
     overflow: 'hidden',
-    width: '200px'
+    // width: '150px'
   };
 
   const fillStyles = {
@@ -27,20 +27,12 @@ function ProgressBar({ percentage, label , star }) {
     borderRadius: '10px'
   };
 
-  const labelStyles = {
-    color: '#000',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)'
-  };
-
   return (
     <div className='flex items-center mb-6 text-gray-700 gap-5 justify-center'>
         <div>
             {star}
         </div>
-      <div style={barStyles}>
+      <div style={barStyles} className='xl:w-96 md:w-60 w-36'>
         <div style={fillStyles}></div>
       </div>
       {<div>{label}</div>}
