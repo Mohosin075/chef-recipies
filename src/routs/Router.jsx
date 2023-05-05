@@ -17,12 +17,12 @@ const router = createBrowserRouter([
         {
             path : '/',
             element : <Home></Home>,
-            loader : ()=> fetch('http://localhost:5000/')
+            loader : ()=> fetch('https://chef-server-mohosin075.vercel.app/')
         },
         {
             path : '/:id',
             element : <PrivateRoutes><VeiwRecipy></VeiwRecipy></PrivateRoutes>,
-            loader: ({params})=> fetch(`http://localhost:5000/${params.id}`)
+            loader: ({params})=> fetch(`https://chef-server-mohosin075.vercel.app/${params.id}`)
         },
         {
             path : '/login',

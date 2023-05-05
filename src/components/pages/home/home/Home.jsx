@@ -4,24 +4,27 @@ import React from "react";
 import Banner from "../banner/Banner";
 import { useLoaderData, useNavigation } from "react-router-dom";
 import Chefs from "../chefs/Chefs";
+import Review from "../Review/Review";
 
 const Home = () => {
   const data = useLoaderData();
-    const navigation = useNavigation();
-  console.log(data);
+  const navigation = useNavigation();
   return (
     <div>
-        <div className="text-5xl">
-        {
-            
-            navigation.state === "loading"
-            && <button className="btn loading">loading</button>
-        }
-        </div>
+      {/* spinner */}
+      <div className="text-5xl">
+        {navigation.state === "loading" && (
+          <button className="btn loading">loading</button>
+        )}
+      </div>
+      {/* banner section */}
       <Banner></Banner>
+      {/* chef section */}
       <div className="px-2 lg:px-20">
         <div className="py-20">
-          <h2 className="text-3xl md:text-5xl text-center font-bold">All Chef</h2>
+          <h2 className="text-3xl md:text-5xl text-center font-bold">
+            All Chef
+          </h2>
           <p className="text-center md:w-2/3 mx-auto mt-6 text-gray-600">
             A chef is a professional cook and tradesman who is proficient in all
             aspects of food preparation, often focusing on a particular cuisine.
@@ -36,6 +39,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {/* Review section : extra section */}
+      <Review></Review>
     </div>
   );
 };
